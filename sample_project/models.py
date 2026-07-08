@@ -89,6 +89,7 @@ class DiedIn(Relation):
     def reverse_name(self) -> str:
         return "is deathplace of"
     
+
 class StudiedAt(Relation):
     subj_model = Person
     obj_model = Group
@@ -96,3 +97,21 @@ class StudiedAt(Relation):
     @classmethod
     def reverse_name(self) -> str:
         return "has student"
+    
+
+class LocatedIn(Relation):
+    subj_model = Group
+    obj_model = Place
+
+    @classmethod
+    def reverse_name(self) -> str:
+        return "location of"
+    
+    
+class IsMarriedTo(Relation):
+    subj_model = Person
+    obj_model = Person
+
+    @classmethod
+    def reverse_name(self) -> str:
+        return "is married to"
