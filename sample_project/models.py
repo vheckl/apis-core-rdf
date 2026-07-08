@@ -16,6 +16,7 @@ class Profession(VersionMixin, GenericModel, models.Model):
 
 class Person(E21_Person, VersionMixin, AbstractEntity, Entity):
     profession = models.ManyToManyField(Profession, blank=True)
+    biography = models.TextField(blank=True, default="")
 
 
 class Place(E53_Place, VersionMixin, AbstractEntity, Entity):
@@ -69,3 +70,29 @@ class IsParentOf(Relation):
     @classmethod
     def reverse_name(self) -> str:
         return "is child of"
+
+
+class BornIn(Relation):
+    subj_model = Person
+    obj_model = Place
+
+    @classmethod
+    def reverse_name(self) -> str:
+        return "is birthplace of"
+
+
+class DiedIn(Relation):
+    subj_model = Person
+    obj_model = Place
+
+    @classmethod
+    def reverse_name(self) -> str:
+        return "is deathplace of"
+    
+class StudiedAt(Relation):
+    subj_model = Person
+    obj_model = Group
+
+    @classmethod
+    def reverse_name(self) -> str:
+        return "has student"
