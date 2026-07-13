@@ -1,0 +1,58 @@
+<style>
+    body {
+        font-family: -apple-system, sans-serif;
+        max-width: 800px;
+        margin: 2rem auto;
+        color: #222;
+    }
+    h1 {
+        border-bottom: 2px solid #333;
+        padding-bottom: 0.5rem;
+    }
+    h2 {
+        margin-top: 2rem;
+        color: #555;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+    th, td {
+        text-align: left;
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background: #f4f4f4;
+    }
+    tr:hover {
+        background: #fafafa;
+    }
+</style>
+
+<h1>Birth and Death Relations</h1>
+
+<h2>Born In</h2>
+<table border="1" cellpadding="6">
+    <tr><th>Person</th><th>Place</th><th>Date</th></tr>
+    {% for rel in born_relations %}
+    <tr>
+        <td>{{ rel.subj }}</td>
+        <td>{{ rel.obj }}</td>
+        <td>{{ rel.date|default:"unknown" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Died In</h2>
+<table border="1" cellpadding="6">
+    <tr><th>Person</th><th>Place</th><th>Date</th></tr>
+    {% for rel in died_relations %}
+    <tr>
+        <td>{{ rel.subj }}</td>
+        <td>{{ rel.obj }}</td>
+        <td>{{ rel.date|default:"unknown" }}</td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import include, path
+from .views import BirthDeathListView
 
 urlpatterns = [
     path("", include("apis_core.urls", namespace="apis")),
@@ -7,4 +8,5 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     # https://docs.djangoproject.com/en/5.0/ref/contrib/admin/#hooking-adminsite-to-urlconf
     path("admin/", admin.site.urls),
+    path("birth-death/", BirthDeathListView.as_view(), name="birth_death_list"),
 ]
