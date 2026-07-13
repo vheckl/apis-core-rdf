@@ -75,6 +75,7 @@ class IsParentOf(Relation):
 class BornIn(Relation):
     subj_model = Person
     obj_model = Place
+    date = models.DateField(null=True, blank=True)
 
     @classmethod
     def reverse_name(self) -> str:
@@ -84,6 +85,7 @@ class BornIn(Relation):
 class DiedIn(Relation):
     subj_model = Person
     obj_model = Place
+    date = models.DateField(null=True, blank=True)
 
     @classmethod
     def reverse_name(self) -> str:
